@@ -29,10 +29,10 @@
 <div class="success">{{session('message')}}</div>
 @endif
 
-<h1>Update Rental</h1>
 <center>
+<h1>Update Rental</h1>
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-5 mx-auto text-center">
             
             <form action="{{url('rental/'.$rental->id)}}" method="POST">
                 @csrf
@@ -54,7 +54,7 @@
 
                 <div class="form-group mt-2">
                     <label for="rental_date">Rental Date</label>
-                    <input type="text" name="rental_date" id="rental_date" placeholder="Enter rental date..." class="form-control" value="{{$rental->rental_date}}">
+                    <input type="date" name="rental_date" id="rental_date" placeholder="Enter rental date..." class="form-control" value="{{$rental->rental_date}}">
                     @error('rental_date')
                         <p class="text-danger">{{$message}}</p>
                     @enderror
@@ -62,7 +62,7 @@
 
                 <div class="form-group mt-2">
                     <label for="return_date">Return Date</label>
-                    <input type="text" name="return_date" id="return_date" placeholder="Enter return date..." class="form-control" value="{{$rental->return_date}}">
+                    <input type="date" name="return_date" id="return_date" placeholder="Enter return date..." class="form-control" value="{{$rental->return_date}}">
                     @error('return_date')
                         <p class="text-danger">{{$message}}</p>
                     @enderror

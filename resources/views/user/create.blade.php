@@ -34,6 +34,10 @@
                 <button class="btn btn-warning">
                     Add User
                 </button>
+
+                <a href="{{url('/')}}" class="btn btn-primary">
+                    Back
+                </a>
             </div>
         </form>
     </div>

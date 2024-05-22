@@ -18,9 +18,8 @@ return new class extends Migration
             $table->date('rental_date');
             $table->date('return_date')->nullable();
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('book_id')->references('id')->on('books');
+            $table->foreign('user_id', 'fk_rentals_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('book_id', 'fk_rentals_book_id')->references('id')->on('books')->onDelete('cascade');
         });
     }
 

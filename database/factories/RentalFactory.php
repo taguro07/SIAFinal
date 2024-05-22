@@ -23,7 +23,7 @@ class RentalFactory extends Factory
         return [
             'user_id' => fake()->randomElement(User::pluck('id')),
             'book_id' => fake()->randomElement(Book::pluck('id')),
-            'rental_date' => now (),
+            'rental_date' =>now (),
             'return_date' => fake()->dateTime(),
         ];
     }

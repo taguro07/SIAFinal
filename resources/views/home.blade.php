@@ -6,10 +6,15 @@
     <title>Online Book Rental</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
     body {
         font-family: 'Times New Roman', Times, serif;
-        background-color: rgb(218, 201, 201);
+        background-image: url('https://s26162.pcdn.co/wp-content/uploads/2022/02/5-Books-You-May-Have-Missed.jpeg'); /* Replace 'your_image_url_here.jpg' with the URL of your image */
+        background-size: cover;
+        background-repeat: no-repeat;
+        /* background-position: center; */
         margin: 0;
         padding: 0;
         display: flex;
@@ -38,17 +43,6 @@
     .nav-pills .nav-link {
     color: #000000;
     }
-
-    .container {
-        background-color: rgba(202, 155, 111, 0.233);
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 24px rgb(202, 184, 19);
-        margin-top: 15px;
-    }
-    /* .table-hover{
-
-    } */
 </style>
     
 </head>
@@ -71,7 +65,7 @@
         </ul>
     </nav>
 
-    <div class="container mt-5">
+    <div class="container">
         @yield('content')
     </div>
 </body>

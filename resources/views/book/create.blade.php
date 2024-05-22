@@ -40,8 +40,12 @@
             
             <div class="form-group mu-3 d-grid gap-2 d-md-flex justify-content-end mt-3">
                 <button class="btn btn-warning">
-                    Add book
+                    Add Book
                 </button>
+
+                <a href="{{url('/')}}" class="btn btn-primary">
+                    Back
+                </a>
             </div>
         </form>
     </div>

@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Str;
+use League\Csv\Writer;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -56,5 +61,71 @@ class UserController extends Controller
         return redirect('/user')->with('message', "$user->name has been deleted.");
     }
 
+    public function index()
+    {
+        $users = User::all();
+        return view('index', compact('users'));
+    }
 
+    public function pdf()
+    {
+        $users = User::latest()->get();
+        $pdf = Pdf::loadView('user/pdf', ['users' => $users]);
+
+        return $pdf->download('users-list.pdf', $pdf);
+    }
+
+    public function generateCSV()
+    {
+        // Retrieve users from the database
+        $users = User::all();
+
+        // Generate CSV filename
+        $fileName = 'users_' . Str::slug(now(), '_') . '.csv';
+
+        // Set CSV headers
+        $headers = [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename="' . $fileName . '"',
+        ];
+
+        // Create a CSV response
+        return Response::stream(function () use ($users) {
+            $file = fopen('php://output', 'w');
+
+            // Add CSV headers
+            fputcsv($file, ['ID', 'Name', 'Email']);
+
+            // Insert CSV data
+            foreach ($users as $user) {
+                fputcsv($file, [
+                    $user->id,
+                    $user->name,
+                    $user->email
+                ]);
+            }
+
+            fclose($file);
+        }, 200, $headers);
+    }
+
+    // public function generateCSV() {
+    //     $users = User::orderBy('name')->get();
+    //     $filename = '../storage/users.csv';
+    //     $file = fopen($filename, 'w+');
+
+    //     foreach($users as $user) {
+    //         fputcsv($file, [
+    //             $user->id,
+    //             $user->name,
+    //             $user->email,
+    //         ]);
+    //     }
+
+    //     fclose($file);
+    //     return response()->download($filename);
+    // }
+
+
+    
 }

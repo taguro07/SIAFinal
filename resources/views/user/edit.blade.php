@@ -60,6 +60,9 @@
                     @enderror
                 </div>
                 <div class="form-group my-3 d-grid gap-2 d-md-flex justify-content-end">
+                    <a href="{{url('/')}}" class="btn btn-primary">
+                        Back
+                    </a>
                     <button type="button" class="btn btn-danger me-md-2 mt-2" data-bs-toggle="modal" data-bs-target="#deleteUserModal">
                         Delete User
                       </button>
